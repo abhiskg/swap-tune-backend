@@ -3,6 +3,7 @@ import cors from "cors";
 import dbConnect from "./config/dbConnect";
 import user from "./routes/user";
 import category from "./routes/category";
+import product from "./routes/product";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use("/api/user", user);
 app.use("/api/category", category);
+app.use("/api/product", product);
 
 dbConnect()
   .then(() => {
