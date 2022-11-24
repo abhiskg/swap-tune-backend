@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dbConnect from "./config/dbConnect";
 import user from "./routes/user";
+import category from "./routes/category";
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/user", user);
+app.use("/api/category", category);
 
 dbConnect()
   .then(() => {
