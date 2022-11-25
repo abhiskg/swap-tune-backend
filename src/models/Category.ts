@@ -8,11 +8,6 @@ const categorySchema = new Schema(
       unique: true,
     },
     image: { type: String, required: [true, "Category Image is Required"] },
-    categoryId: {
-      type: String,
-      required: [true, "Category Id is Required"],
-      unique: true,
-    },
   },
   { timestamps: true }
 );
