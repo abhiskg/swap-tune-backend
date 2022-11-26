@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get("/", VerifyJwt, VerifyAdmin, GetUserByRole);
 router.post("/", CheckExistingUser, CreateNewUser);
-router.patch("/:id", UpdateUserRole);
-router.delete("/:id", DeleteUser);
+router.patch("/:id", VerifyJwt, VerifyAdmin, UpdateUserRole);
+router.delete("/:id", VerifyJwt, VerifyAdmin, DeleteUser);
 
 export default router;
