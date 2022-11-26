@@ -21,7 +21,7 @@ export const CreateNewUser = async (req: Request, res: Response) => {
   }
 };
 
-export const GetUserByRole = async (req: Request, res: Response) => {
+export const GetUsersByRole = async (req: Request, res: Response) => {
   try {
     const user = await User.find({ role: req.query.role });
 
@@ -33,6 +33,18 @@ export const GetUserByRole = async (req: Request, res: Response) => {
     }
 
     res.status(200).json({ success: true, data: user });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: (error as Error).message,
+    });
+  }
+};
+
+export const GetUserRole = async (req: Request, res: Response) => {
+  try {
+    const role = req.userRole;
+    res.status(200).json({ success: true, data: role });
   } catch (error) {
     res.status(400).json({
       success: false,

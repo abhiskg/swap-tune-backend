@@ -14,7 +14,6 @@ const VerifySeller = async (
       .json({ success: false, message: "Forbidden Access" });
   }
 
-  //   req.isAdmin = false;
   next();
 };
 

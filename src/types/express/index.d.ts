@@ -3,8 +3,8 @@ declare module "express-serve-static-core" {
   interface Request {
     validId?: Record<string>;
     decoded?: string | jwt.JwtPayload;
-    isAdmin: boolean;
     userEmail: string;
+    userRole: "buyer" | "seller" | "admin";
   }
   interface Response {
     myField?: string;

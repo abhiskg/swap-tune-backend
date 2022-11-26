@@ -9,7 +9,7 @@ const VerifyUser = async (req: Request, res: Response, next: NextFunction) => {
       .status(403)
       .json({ success: false, message: "Forbidden Access" });
   }
-
+req.userRole = user.role
   next();
 };
 

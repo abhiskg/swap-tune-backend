@@ -10,7 +10,6 @@ const VerifyAdmin = async (req: Request, res: Response, next: NextFunction) => {
       .json({ success: false, message: "Forbidden Access" });
   }
 
-  req.isAdmin = true;
   next();
 };
 
