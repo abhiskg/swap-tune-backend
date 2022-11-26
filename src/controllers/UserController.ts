@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/User";
-import { AssignJwt } from "../services/AssignJwt";
+import { AssignJwt } from "../services/ManageJwt";
 
 export const CreateNewUser = async (req: Request, res: Response) => {
   const role = req.body.role;
@@ -24,7 +24,7 @@ export const CreateNewUser = async (req: Request, res: Response) => {
 export const GetUserByRole = async (req: Request, res: Response) => {
   try {
     const user = await User.find({ role: req.query.role });
-    console.log(req.headers.authorization);
+
     if (!user) {
       return res.status(404).json({
         success: false,

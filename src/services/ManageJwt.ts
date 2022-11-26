@@ -9,3 +9,7 @@ export const AssignJwt = async (email: string) => {
   });
   return token;
 };
+
+export const VerifyToken = async (token: string) => {
+  return jwt.verify(token, process.env.ACCESS_TOKEN as string);
+};

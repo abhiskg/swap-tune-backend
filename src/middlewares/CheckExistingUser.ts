@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import User from "../models/User";
-import { AssignJwt } from "../services/AssignJwt";
+import { AssignJwt } from "../services/ManageJwt";
 
 export const CheckExistingUser = async (
   req: Request,
