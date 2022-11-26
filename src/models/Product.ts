@@ -33,13 +33,17 @@ const productSchema = new Schema(
       enum: ["available", "sold"],
       default: "available",
     },
+    isAdvertised: {
+      type: Boolean,
+      default: "false",
+    },
     sellerName: {
       type: String,
       required: [true, "Seller Name is Required"],
     },
-    sellerId: {
+    sellerEmail: {
       type: String,
-      required: [true, "Seller Id is Required"],
+      required: [true, "Seller Email is Required"],
     },
     isSellerVerified: {
       type: Boolean,
