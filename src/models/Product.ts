@@ -37,6 +37,10 @@ const productSchema = new Schema(
       type: String,
       required: [true, "Seller Name is Required"],
     },
+    sellerId: {
+      type: String,
+      required: [true, "Seller Id is Required"],
+    },
     isSellerVerified: {
       type: Boolean,
       default: false,

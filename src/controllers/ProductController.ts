@@ -5,12 +5,18 @@ export const GetProductsByCategory = async (req: Request, res: Response) => {
   try {
     const products = await Product.find({ categoryId: req.params.id });
 
-    if (!products) {
-      return res.status(404).json({
-        success: false,
-        error: "Not Product Found",
-      });
-    }
+    res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: (error as Error).message,
+    });
+  }
+};
+
+export const GetProductsBySellerId = async (req: Request, res: Response) => {
+  try {
+    const products = await Product.find({ sellerId: req.params.id });
 
     res.status(200).json({ success: true, data: products });
   } catch (error) {

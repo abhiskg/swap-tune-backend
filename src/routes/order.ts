@@ -3,10 +3,12 @@ import {
   CreateNewOrder,
   GetOrdersByEmail,
 } from "../controllers/OrderController";
+import { VerifyJwt } from "../middlewares/VerifyJwt";
+import VerifyUser from "../middlewares/VerifyUser";
 
 const router = express.Router();
 
-router.get("/", GetOrdersByEmail);
+router.get("/", VerifyJwt, VerifyUser, GetOrdersByEmail);
 router.post("/", CreateNewOrder);
 
 export default router;
