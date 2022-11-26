@@ -24,7 +24,7 @@ const productSchema = new Schema(
     yearOfUse: { type: Number, required: [true, "Year of use is Required"] },
     location: { type: String, required: [true, "Location is Required"] },
     description: { type: String, required: [true, "Description is Required"] },
-    categoryId: {
+    category: {
       type: String,
       required: [true, "Category Id is Required"],
     },

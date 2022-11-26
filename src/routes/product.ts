@@ -2,6 +2,7 @@ import express from "express";
 import {
   CreateNewProduct,
   DeleteProductById,
+  GetAdvertisedProducts,
   GetProductsByCategory,
   GetProductsBySellerEmail,
   ToggleAdvertiseMode,
@@ -12,9 +13,10 @@ import VerifySeller from "../middlewares/VerifySeller";
 
 const router = express.Router();
 
-router.get("/", VerifyJwt, VerifySeller, GetProductsBySellerEmail);
+router.get("/", GetAdvertisedProducts);
 router.post("/", VerifyJwt, VerifySeller, CreateNewProduct);
 
+router.get("/:email", VerifyJwt, VerifySeller, GetProductsBySellerEmail);
 router.get("/:id", ValidateId, GetProductsByCategory);
 router.patch("/:id", ValidateId, VerifyJwt, VerifySeller, ToggleAdvertiseMode);
 router.delete("/:id", ValidateId, VerifyJwt, VerifySeller, DeleteProductById);

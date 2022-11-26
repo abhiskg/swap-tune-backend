@@ -41,7 +41,24 @@ export const ToggleAdvertiseMode = async (req: Request, res: Response) => {
 
 export const GetProductsBySellerEmail = async (req: Request, res: Response) => {
   try {
-    const products = await Product.find({ sellerEmail: req.query.email });
+    const products = await Product.find({ sellerEmail: req.params.email });
+
+    res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: (error as Error).message,
+    });
+  }
+};
+
+export const GetAdvertisedProducts = async (req: Request, res: Response) => {
+  console.log(req.query.status, req.query.isAdvertised);
+  try {
+    const products = await Product.find({
+      status: req.query.status,
+      isAdvertised: req.query.isAdvertised,
+    });
 
     res.status(200).json({ success: true, data: products });
   } catch (error) {
