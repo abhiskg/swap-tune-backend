@@ -16,6 +16,7 @@ const router = express.Router();
 router.get("/", GetAdvertisedProducts);
 router.post("/", VerifyJwt, VerifySeller, CreateNewProduct);
 
+router.get("/:category", GetProductsByCategory);
 router.get("/:email", VerifyJwt, VerifySeller, GetProductsBySellerEmail);
 router.get("/:id", ValidateId, GetProductsByCategory);
 router.patch("/:id", ValidateId, VerifyJwt, VerifySeller, ToggleAdvertiseMode);

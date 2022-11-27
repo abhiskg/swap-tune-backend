@@ -5,11 +5,9 @@ const VerifyUser = async (req: Request, res: Response, next: NextFunction) => {
   const decodedEmail = req.decoded.email;
   const user = await QueryUser(decodedEmail);
   if (!user) {
-    return res
-      .status(403)
-      .json({ success: false, message: "Forbidden Access" });
+    return res.status(404).json({ success: false, message: "User not found" });
   }
-req.userRole = user.role
+  req.userRole = user.role;
   next();
 };
 

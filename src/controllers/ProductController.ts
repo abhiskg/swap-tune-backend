@@ -3,7 +3,10 @@ import Product from "../models/Product";
 
 export const GetProductsByCategory = async (req: Request, res: Response) => {
   try {
-    const products = await Product.find({ categoryId: req.params.id });
+    const products = await Product.find({
+      categoryId: req.params.id,
+      status: "available",
+    });
 
     res.status(200).json({ success: true, data: products });
   } catch (error) {
@@ -19,11 +22,15 @@ export const ToggleAdvertiseMode = async (req: Request, res: Response) => {
     const product = await Product.findById(req.params.id);
 
     if (!product) {
-      return res.status(404).json({ success: false, message: "Not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Not product found" });
     }
 
     if (product.status === "sold") {
-      return res.status(400).json({ success: false, message: "Bad Request" });
+      return res
+        .status(403)
+        .json({ success: false, message: "Forbidden Access" });
     }
 
     product.isAdvertised = !product.isAdvertised;

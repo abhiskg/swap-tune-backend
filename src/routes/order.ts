@@ -9,6 +9,6 @@ import VerifyUser from "../middlewares/VerifyUser";
 const router = express.Router();
 
 router.get("/", VerifyJwt, VerifyUser, GetOrdersByEmail);
-router.post("/", CreateNewOrder);
+router.post("/",VerifyJwt,VerifyUser, CreateNewOrder);
 
 export default router;
