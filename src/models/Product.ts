@@ -49,6 +49,10 @@ const productSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    isReported: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

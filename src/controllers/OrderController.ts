@@ -36,3 +36,20 @@ export const GetOrdersByEmail = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const GetOrderById = async (req: Request, res: Response) => {
+  try {
+    const order = await Order.findById(req.params.id);
+
+    if (!order) {
+      res.status(404).json({ success: false, message: "Order not found" });
+    }
+
+    res.status(200).json({ success: true, data: order });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: (error as Error).message,
+    });
+  }
+};
