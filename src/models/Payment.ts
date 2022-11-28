@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const paymentSchema = new Schema({
   username: { type: String, required: [true, "Username is Required"] },
@@ -33,3 +33,5 @@ const paymentSchema = new Schema({
     required: [true, "Transaction Status is Required"],
   },
 });
+
+export default mongoose.model("Payment", paymentSchema);

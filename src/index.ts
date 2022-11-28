@@ -6,6 +6,7 @@ import category from "./routes/category";
 import product from "./routes/product";
 import order from "./routes/order";
 import stripe from "./routes/stripe";
+import payment from "./routes/payment";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use("/api/user", user);
 app.use("/api/category", category);
 app.use("/api/product", product);
 app.use("/api/order", order);
+app.use("/api/payment", payment);
 
 app.use("/api/create-payment-intend", stripe);
 
