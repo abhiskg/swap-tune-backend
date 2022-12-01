@@ -18,7 +18,7 @@ app.use(cors());
 app.use("/api/user", user);
 app.use("/api/v1", category);
 app.use("/api/product", product);
-app.use("/api/order", order);
+app.use("/api/v1", order);
 app.use("/api/payment", payment);
 
 app.use("/api/create-payment-intend", stripe);

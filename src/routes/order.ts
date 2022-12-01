@@ -10,9 +10,9 @@ import VerifyUser from "../middlewares/VerifyUser";
 
 const router = express.Router();
 
-router.get("/", VerifyJwt, VerifyUser, GetOrdersByEmail);
-router.post("/", VerifyJwt, VerifyUser, CreateNewOrder);
+router.route("/orders").get(VerifyJwt, VerifyUser, GetOrdersByEmail);
+router.route("/order/new").post(VerifyJwt, VerifyUser, CreateNewOrder);
 
-router.get("/:id", ValidateId, VerifyJwt, VerifyUser, GetOrderById);
+router.route("/order/:id").get(ValidateId, VerifyJwt, VerifyUser, GetOrderById);
 
 export default router;
