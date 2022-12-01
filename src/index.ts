@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-app.use("/api/user", user);
+app.use("/api/v1", user);
 app.use("/api/v1", category);
 app.use("/api/product", product);
 app.use("/api/v1", order);

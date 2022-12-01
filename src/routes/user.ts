@@ -14,10 +14,13 @@ import VerifyUser from "../middlewares/VerifyUser";
 
 const router = express.Router();
 
-router.get("/", VerifyJwt, VerifyAdmin, GetUsersByRole);
-router.get("/role", VerifyJwt, VerifyUser, GetUserRole);
-router.post("/", CheckExistingUser, CreateNewUser);
-router.patch("/:id", ValidateId, VerifyJwt, VerifyAdmin, UpdateUserRole);
-router.delete("/:id", ValidateId, VerifyJwt, VerifyAdmin, DeleteUser);
+router.route("/users").get(VerifyJwt, VerifyAdmin, GetUsersByRole);
+router.route("/user/role").get(VerifyJwt, VerifyUser, GetUserRole);
+router.route("/user/new").post(CheckExistingUser, CreateNewUser);
+
+router
+  .route("/admin/user/:id")
+  .patch(ValidateId, VerifyJwt, VerifyAdmin, UpdateUserRole)
+  .delete(ValidateId, VerifyJwt, VerifyAdmin, DeleteUser);
 
 export default router;
