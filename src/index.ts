@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/user", user);
-app.use("/api/category", category);
+app.use("/api/v1", category);
 app.use("/api/product", product);
 app.use("/api/order", order);
 app.use("/api/payment", payment);

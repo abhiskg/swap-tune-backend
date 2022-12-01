@@ -8,7 +8,7 @@ import { VerifyJwt } from "../middlewares/VerifyJwt";
 
 const router = express.Router();
 
-router.get("/", GetAllCategory);
-router.post("/", VerifyJwt, VerifyAdmin, CreateCategory);
+router.route("/categories").get(GetAllCategory);
+router.post("/admin/category/new", VerifyJwt, VerifyAdmin, CreateCategory);
 
 export default router;
