@@ -14,7 +14,7 @@ import VerifyUser from "../middlewares/VerifyUser";
 
 const router = express.Router();
 
-router.route("/users").get(VerifyJwt, VerifyAdmin, GetUsersByRole);
+router.route("/admin/users").get(VerifyJwt, VerifyAdmin, GetUsersByRole);
 router.route("/user/role").get(VerifyJwt, VerifyUser, GetUserRole);
 router.route("/user/new").post(CheckExistingUser, CreateNewUser);
 

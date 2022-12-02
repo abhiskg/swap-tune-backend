@@ -17,11 +17,11 @@ app.use(cors());
 
 app.use("/api/v1", user);
 app.use("/api/v1", category);
-app.use("/api/product", product);
+app.use("/api/v1", product);
 app.use("/api/v1", order);
-app.use("/api/payment", payment);
+app.use("/api/v1", payment);
 
-app.use("/api/create-payment-intend", stripe);
+app.use("/api/v1", stripe);
 
 dbConnect()
   .then(() => {

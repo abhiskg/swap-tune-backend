@@ -4,7 +4,7 @@ dotenv.config();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export const CreatePaymentIntend = async (req: Request, res: Response) => {
+export const SendStripeApi = async (req: Request, res: Response) => {
   try {
     const price = req.body.price;
     const amount = price * 100;

@@ -17,16 +17,30 @@ import VerifyUser from "../middlewares/VerifyUser";
 
 const router = express.Router();
 
-router.get("/", GetAdvertisedProducts);
-router.post("/", VerifyJwt, VerifySeller, CreateNewProduct);
+router.route("/products/advertised").get(GetAdvertisedProducts);
+router.route("/products/:category").get(GetProductsByCategory);
+router
+  .route("/product/report")
+  .patch(VerifyJwt, VerifyUser, ToggleProductReportOption);
 
-router.get("/:category", GetProductsByCategory);
-// router.get("/:id", ValidateId, GetProductsByCategory);
-router.get("/seller/:email", VerifyJwt, VerifySeller, GetProductsBySellerEmail);
-router.patch("/:id", ValidateId, VerifyJwt, VerifySeller, ToggleAdvertiseMode);
-router.delete("/:id", ValidateId, VerifyJwt, VerifyUser, DeleteProductById);
+router
+  .route("/seller/product/new")
+  .post(VerifyJwt, VerifySeller, CreateNewProduct);
 
-router.get("/reports", VerifyJwt, VerifyAdmin, GetReportedProducts);
-router.patch("/reports", VerifyJwt, VerifyUser, ToggleProductReportOption);
+router
+  .route("/seller/products/:email")
+  .get(VerifyJwt, VerifySeller, GetProductsBySellerEmail);
+
+router
+  .route("/seller/product/:id")
+  .patch(ValidateId, VerifyJwt, VerifySeller, ToggleAdvertiseMode);
+
+router
+  .route("/seller/product/:id")
+  .delete(ValidateId, VerifyJwt, VerifyUser, DeleteProductById);
+
+router
+  .route("/admin/products/reported")
+  .get(VerifyJwt, VerifyAdmin, GetReportedProducts);
 
 export default router;

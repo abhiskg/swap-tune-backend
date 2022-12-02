@@ -1,8 +1,8 @@
 import express from "express";
-import { CreatePaymentIntend } from "../controllers/StripeController";
+import { SendStripeApi } from "../controllers/StripeController";
 
 const router = express.Router();
 
-router.post("/", CreatePaymentIntend);
+router.post("/stripeapi", SendStripeApi);
 
 export default router;
